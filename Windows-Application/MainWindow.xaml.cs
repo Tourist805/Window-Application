@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Engine.ViewModel;
 
 namespace Windows_Application
 {
@@ -20,9 +21,12 @@ namespace Windows_Application
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly Session _session = new Session();
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = _session;
         }
     }
 }
