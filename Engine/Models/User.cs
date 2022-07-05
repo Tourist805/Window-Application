@@ -11,5 +11,13 @@ namespace Engine.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; } 
+        public User(int userId, int age, string name, string surname, string email)
+        {
+            UserID = userId;
+            Age = age;
+            Name = name;
+            Surname = surname;
+            Email = email;
+        }
     }
 }

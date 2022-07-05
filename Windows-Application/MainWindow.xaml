@@ -23,5 +23,54 @@
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
+        <!-- Welcome Label --> 
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+               Content="Welcome to the blooed monitoring application. Please Enter patient User ID" Background="AliceBlue"/>
+
+        <!-- User Stats -->
+        <Grid Grid.Row="1" Grid.Column="0" Background="Aquamarine">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Row="0" Name="UserTextBox" Margin="10"/>
+            <Button Grid.Row="1" Grid.Column="0"
+                    Height="30" Width="100" Margin="10"
+                    Click="OnClick_SearchByID"
+                    Content="Search"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Name"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="{Binding DefaultValue}"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Surname"/>
+            <Label Grid.Row="3" Grid.Column="1" Content="{Binding DefaultValue}"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="Age"/>
+            <Label Grid.Row="4" Grid.Column="1" Content="{Binding DefaultValue}"/>
+            <Label Grid.Row="5" Grid.Column="0" Content="Email"/>
+            <Label Grid.Row="5" Grid.Column="1" Content="{Binding DefaultValue}"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1" Background="BurlyWood">
+            <DataGrid   
+                      ItemsSource="{Binding Users}"
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="Column">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="User Name"
+                                        Binding="{Binding User.Name}"
+                                        Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Window>

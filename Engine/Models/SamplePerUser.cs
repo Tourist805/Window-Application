@@ -8,5 +8,11 @@ namespace Engine.Models
     {
         public int SampleID { get; set; }
         public int UserId { get; set; }
+
+        public SamplePerUser(int sampleID, int userID)
+        {
+            SampleID = sampleID;
+            UserId = userID;
+        }
     }
 }
