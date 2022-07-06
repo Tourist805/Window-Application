@@ -34,6 +34,17 @@ namespace Engine.Factories
         {
             _users.Add(user);
         }
+        public static User UserByID(string id)
+        {
+            foreach (User user in Users)
+            {
+                if (user.UserID == InputToInt(id))
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
         private static int InputToInt(string value)
         {
             try

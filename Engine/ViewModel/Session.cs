@@ -49,15 +49,8 @@ namespace Engine.ViewModel
             return 0;
         }
         public void SetUserByID(string id)
-        { 
-            foreach (User user in Users)
-            {
-                if(user.UserID == InputIsString(id))
-                {
-                    CurrentUser = user;
-                    return;
-                }
-            }
+        {
+            CurrentUser = DataAccessFactory.UserByID(id);
         }
         public void AddSample(string systolicPressure, string diastolicPressure)
         {

@@ -99,7 +99,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <!-- Adding Sample -->
+        
             <Grid Grid.Row="0" Grid.Column="0"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"/>
