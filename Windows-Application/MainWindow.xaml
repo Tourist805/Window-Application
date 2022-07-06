@@ -51,23 +51,35 @@
                     Click="OnClick_SearchByID"
                     Content="Search"/>
             <Label Grid.Row="2" Grid.Column="0" Content="Name"/>
-            <Label Grid.Row="2" Grid.Column="1" Content="{Binding DefaultValue}"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentUser.Name}"/>
             <Label Grid.Row="3" Grid.Column="0" Content="Surname"/>
-            <Label Grid.Row="3" Grid.Column="1" Content="{Binding DefaultValue}"/>
+            <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentUser.Surname}"/>
             <Label Grid.Row="4" Grid.Column="0" Content="Age"/>
-            <Label Grid.Row="4" Grid.Column="1" Content="{Binding DefaultValue}"/>
+            <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentUser.Age}"/>
             <Label Grid.Row="5" Grid.Column="0" Content="Email"/>
-            <Label Grid.Row="5" Grid.Column="1" Content="{Binding DefaultValue}"/>
+            <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentUser.Email}"/>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" Background="BurlyWood">
             <DataGrid   
-                      ItemsSource="{Binding Users}"
+                      ItemsSource="{Binding Samples}"
                       AutoGenerateColumns="False"
                       HeadersVisibility="Column">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="User Name"
-                                        Binding="{Binding User.Name}"
+                    <DataGridTextColumn Header="Sample ID"
+                                        Binding="{Binding BloodPressureSample.SampleID}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Time Entered"
+                                        Binding="{Binding BloodPressureSample.TimeEntered}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Systolic Pressure"
+                                        Binding="{Binding BloodPressureSample.SystolicPressure}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Diastolic Pressure"
+                                        Binding="{Binding BloodPressureSample.DiastolicPressure}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="MAP"
+                                        Binding="{Binding BloodPressureSample.MAP}"
                                         Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
