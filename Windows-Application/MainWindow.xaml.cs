@@ -32,6 +32,7 @@ namespace Windows_Application
             InitializeComponent();
 
             DataContext = _session;
+            
         }
 
         private void OnClick_SearchByID(object sender, RoutedEventArgs e)

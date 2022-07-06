@@ -68,25 +68,8 @@
         <Grid Grid.Row="1" Grid.Column="1" Background="BurlyWood">
             <DataGrid   
                       ItemsSource="{Binding Samples}"
-                      AutoGenerateColumns="False"
                       HeadersVisibility="Column">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Sample ID"
-                                        Binding="{Binding BloodPressureSample.SampleID}"
-                                        Width="*"/>
-                    <DataGridTextColumn Header="Time Entered"
-                                        Binding="{Binding BloodPressureSample.TimeEntered}"
-                                        Width="*"/>
-                    <DataGridTextColumn Header="Systolic Pressure"
-                                        Binding="{Binding BloodPressureSample.SystolicPressure}"
-                                        Width="*"/>
-                    <DataGridTextColumn Header="Diastolic Pressure"
-                                        Binding="{Binding BloodPressureSample.DiastolicPressure}"
-                                        Width="*"/>
-                    <DataGridTextColumn Header="MAP"
-                                        Binding="{Binding BloodPressureSample.MAP}"
-                                        Width="*"/>
-                </DataGrid.Columns>
+
             </DataGrid>
         </Grid>
     </Grid>

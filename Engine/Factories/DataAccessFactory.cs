@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using Engine.Models;
+using System.Collections.ObjectModel;
 
 namespace Engine.Factories
 {
     public static class DataAccessFactory
     {
         private static List<User> _users = new List<User>();
-        private static List<BloodPressureSample> _samples = new List<BloodPressureSample>();
+        private static ObservableCollection<BloodPressureSample> _samples = new ObservableCollection<BloodPressureSample>();
         private static List<SamplePerUser> _userSamples = new List<SamplePerUser>();
         public static List<User> Users => _users;
-        public static List<BloodPressureSample> BloodPressureSamples => _samples;
+        public static ObservableCollection<BloodPressureSample> BloodPressureSamples => _samples;
         public static List<SamplePerUser> SamplePerUser => _userSamples;
 
         static DataAccessFactory()

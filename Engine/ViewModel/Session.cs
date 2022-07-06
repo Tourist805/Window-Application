@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using Engine.Models;
 using Engine.Factories;
+using System.Collections.ObjectModel;
 
 namespace Engine.ViewModel
 {
     public class Session
     {
         public int DefaultValue { get; set; }
-        public List<BloodPressureSample> Samples {get;set;}
+        public ObservableCollection<BloodPressureSample> Samples {get;set;}
         public List<User> Users { get; set; }
         private User _currentUser;
+       
         public User CurrentUser
         {
             get
