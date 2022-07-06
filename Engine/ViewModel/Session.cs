@@ -12,7 +12,7 @@ namespace Engine.ViewModel
     {
         public int DefaultValue { get; set; }
         public ObservableCollection<BloodPressureSample> Samples {get;set;}
-        public List<User> Users { get; set; }
+        public ObservableCollection<User> Users { get; set; }
         private User _currentUser;
        
         public User CurrentUser
@@ -58,6 +58,10 @@ namespace Engine.ViewModel
                     return;
                 }
             }
+        }
+        public void AddSample(string systolicPressure, string diastolicPressure)
+        {
+            DataAccessFactory.AddSample(systolicPressure, diastolicPressure);
         }
     }
 }

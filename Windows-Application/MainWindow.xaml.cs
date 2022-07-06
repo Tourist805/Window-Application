@@ -39,6 +39,10 @@ namespace Windows_Application
         {
             _session.SetUserByID(userId_txt.Text);
         }
+        private void OnClick_AddingSample(object sender, RoutedEventArgs e)
+        {
+            _session.AddSample(systolicPres_txt.Text, diastolicPres_txt.Text);
+        }
     }
   
 }

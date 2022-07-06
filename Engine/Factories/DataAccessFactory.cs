@@ -8,12 +8,13 @@ namespace Engine.Factories
 {
     public static class DataAccessFactory
     {
-        private static List<User> _users = new List<User>();
+        private static ObservableCollection<User> _users = new ObservableCollection<User>();
         private static ObservableCollection<BloodPressureSample> _samples = new ObservableCollection<BloodPressureSample>();
         private static List<SamplePerUser> _userSamples = new List<SamplePerUser>();
-        public static List<User> Users => _users;
+        public static ObservableCollection<User> Users => _users;
         public static ObservableCollection<BloodPressureSample> BloodPressureSamples => _samples;
         public static List<SamplePerUser> SamplePerUser => _userSamples;
+        private static int _currentSampleID = 9004;
 
         static DataAccessFactory()
         {
@@ -28,6 +29,27 @@ namespace Engine.Factories
             _userSamples.Add(new SamplePerUser(1002, 9002));
             _userSamples.Add(new SamplePerUser(1002, 9003));
             _userSamples.Add(new SamplePerUser(1003, 9001));
+        }
+        public static void AddUser(User user)
+        {
+            _users.Add(user);
+        }
+        private static int InputToInt(string value)
+        {
+            try
+            {
+                int result = Int32.Parse(value);
+                return result;
+            }
+            catch (FormatException)
+            {
+                return 0;
+            }
+            return 0;
+        }
+        public static void AddSample(string systolicPressure, string dyastolicPressure)
+        {
+            _samples.Add(new BloodPressureSample(_currentSampleID++, DateTime.Now, InputToInt(systolicPressure), InputToInt(dyastolicPressure)));
         }
     }
 }

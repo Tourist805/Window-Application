@@ -11,7 +11,7 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,8 +23,8 @@
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
-        <!-- Welcome Label --> 
+
+        <!-- Welcome Label -->
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
                Content="Welcome to the blooed monitoring application. Please Enter patient User ID" Background="AliceBlue"/>
 
@@ -65,11 +65,63 @@
                      Text="{Binding Path=CurrentUser.Email}"/>
         </Grid>
 
+        <!-- Samples -->
         <Grid Grid.Row="1" Grid.Column="1" Background="BurlyWood">
             <DataGrid   
                       ItemsSource="{Binding Samples}"
                       HeadersVisibility="Column">
             </DataGrid>
+        </Grid>
+
+        <!-- Description -->
+        <Grid Grid.Row="2" Grid.Column="0" Background="BurlyWood">
+            <TabControl>
+                <TabItem Header="User Data">
+                    
+                </TabItem>
+                <TabItem Header="Blood monitoring Prescription">
+                    
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <!-- Adding Sample -->
+        <Grid Grid.Row="2" Grid.Column="1" Background="Lavender">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Adding Sample -->
+            <Grid Grid.Row="0" Grid.Column="0"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"/>
+
+            <Label Grid.Row="0" Grid.Column="0" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Content="Systolic Pressure"/>
+            <TextBox Grid.Row="0" Grid.Column="1"
+                     Height="20" Width="100"
+                     x:Name="systolicPres_txt" Margin="1"/>
+            <Label Grid.Row="1" Grid.Column="0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Content="Diastolic"/>
+            <TextBox Grid.Row="1" Grid.Column="1" 
+                     Height="20" Width="100"
+                     x:Name="diastolicPres_txt" Margin="10"/>
+            <Button Grid.Row="2" Grid.Column="0"
+                    Height="30" Width="100"
+                    Click="OnClick_AddingSample"
+                    Content="Enter"></Button>
         </Grid>
     </Grid>
 </Window>
