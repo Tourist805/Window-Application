@@ -57,7 +57,12 @@
             <Label Grid.Row="4" Grid.Column="0" Content="Age"/>
             <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentUser.Age}"/>
             <Label Grid.Row="5" Grid.Column="0" Content="Email"/>
-            <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentUser.Email}"/>
+            <TextBox Grid.Row="5" Grid.Column="1" Height ="60" Width="120" 
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Visible"
+                     IsReadOnly="True"
+                     Text="{Binding Path=CurrentUser.Email}"/>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" Background="BurlyWood">
