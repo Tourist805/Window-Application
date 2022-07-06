@@ -4,10 +4,11 @@ using System.Text;
 using Engine.Models;
 using Engine.Factories;
 using System.Collections.ObjectModel;
+using Engine.Tools;
 
 namespace Engine.ViewModel
 {
-    public class Session
+    public class Session : BaseNotificationClass
     {
         public int DefaultValue { get; set; }
         public ObservableCollection<BloodPressureSample> Samples {get;set;}
@@ -23,7 +24,7 @@ namespace Engine.ViewModel
             set
             {
                 _currentUser = value;
-
+                OnPropertyChanged();
             }
         }
         public Session()
@@ -34,16 +35,29 @@ namespace Engine.ViewModel
             Samples = DataAccessFactory.BloodPressureSamples;
             Users = DataAccessFactory.Users;
         }
-        public User GetUserByID(int id)
+        private int InputIsString(string id)
         {
-            foreach(User user in Users)
+            try
             {
-                if(user.UserID == id)
+                int result = Int32.Parse(id);
+                return result;
+            }
+            catch (FormatException)
+            {
+                return 0;
+            }
+            return 0;
+        }
+        public void SetUserByID(string id)
+        { 
+            foreach (User user in Users)
+            {
+                if(user.UserID == InputIsString(id))
                 {
-                    return user;
+                    CurrentUser = user;
+                    return;
                 }
             }
-            return null;
         }
     }
 }

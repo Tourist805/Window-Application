@@ -26,7 +26,7 @@ namespace Windows_Application
     public partial class MainWindow : Window
     {
         private readonly Session _session = new Session();
-        private int _receivedID = 1001;
+        private string _receivedID = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace Windows_Application
 
         private void OnClick_SearchByID(object sender, RoutedEventArgs e)
         {
-            _session.GetUserByID(_receivedID);
+            _session.SetUserByID(userId_txt.Text);
         }
     }
   
