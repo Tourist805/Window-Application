@@ -11,6 +11,7 @@ namespace Engine.Models
         public int SystolicPressure {get; set;}
         public int DiastolicPressure { get; set; }
         public int MAP => (DiastolicPressure + (SystolicPressure - DiastolicPressure) / 3);
+        public bool IsNormal => ((MAP >= 70) && (MAP <= 100));
         public BloodPressureSample(int sampleID, DateTime timeEntered, int systolicPressure, int diastolicPressure)
         {
             SampleID = sampleID;
