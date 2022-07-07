@@ -85,7 +85,7 @@
             </TabControl>
         </Grid>
 
-        <!-- Adding Sample -->
+        <!-- CRUD for Samples -->
         <Grid Grid.Row="2" Grid.Column="1" Background="Lavender">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
@@ -100,6 +100,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
         
+            <!-- Samples Data Updates -->
             <Grid Grid.Row="0" Grid.Column="0"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"/>

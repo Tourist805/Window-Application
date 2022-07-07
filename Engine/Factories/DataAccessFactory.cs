@@ -10,11 +10,33 @@ namespace Engine.Factories
     {
         private static ObservableCollection<User> _users = new ObservableCollection<User>();
         private static ObservableCollection<BloodPressureSample> _samples = new ObservableCollection<BloodPressureSample>();
-        private static List<SamplePerUser> _userSamples = new List<SamplePerUser>();
+        private static ObservableCollection<BloodPressureSample> _activeSamples = new ObservableCollection<BloodPressureSample>();
+        private static ObservableCollection<SamplePerUser> _userSamples = new ObservableCollection<SamplePerUser>();
         public static ObservableCollection<User> Users => _users;
-        public static ObservableCollection<BloodPressureSample> BloodPressureSamples => _samples;
-        public static List<SamplePerUser> SamplePerUser => _userSamples;
+        
+        public static ObservableCollection<BloodPressureSample> BloodPressureSamples
+        {
+            get
+            {
+                if(_isDefinedUserID)
+                {
+                    UpdateAccessFactory(_currentUserID);
+                    return _activeSamples;
+                }
+                else
+                {
+                    return _samples;
+                }
+            }
+            set
+            {
+                _samples = value;
+            }
+        }
+        public static ObservableCollection<SamplePerUser> SamplePerUser => _userSamples;
         private static int _currentSampleID = 9004;
+        private static int _currentUserID = 0;
+        private static bool _isDefinedUserID = false;
 
         static DataAccessFactory()
         {
@@ -36,6 +58,8 @@ namespace Engine.Factories
         }
         public static User UserByID(string id)
         {
+            _currentUserID = InputToInt(id);
+            _isDefinedUserID = true;
             foreach (User user in Users)
             {
                 if (user.UserID == InputToInt(id))
@@ -44,6 +68,38 @@ namespace Engine.Factories
                 }
             }
             return null;
+        }
+        public static BloodPressureSample SampleBySampleId(string sampleID)
+        {
+            foreach(BloodPressureSample smp in _samples)
+            {
+                if(smp.SampleID == InputToInt(sampleID))
+                {
+                    return smp;
+                }
+            }
+            return null;
+        }
+        public static void UpdateAccessFactory(int Userid)
+        {
+            _activeSamples.Clear();
+            List<int> sampleidAct = new List<int>();
+            foreach(SamplePerUser smp in _userSamples)
+            {
+                if(smp.UserId == Userid)
+                {
+                    sampleidAct.Add(smp.SampleID);
+                }
+            }
+
+            for(int i = 0; i < sampleidAct.Count; i++)
+            {
+                BloodPressureSample smp1 = SampleBySampleId(sampleidAct[i].ToString());
+                if(smp1 != null)
+                {
+                    _activeSamples.Add(smp1);
+                }
+            }
         }
         private static int InputToInt(string value)
         {
@@ -58,9 +114,12 @@ namespace Engine.Factories
             }
             return 0;
         }
-        public static void AddSample(string systolicPressure, string dyastolicPressure)
+        public static void AddSample(string systolicPressure, string dyastolicPressure, string UserID)
         {
             _samples.Add(new BloodPressureSample(_currentSampleID++, DateTime.Now, InputToInt(systolicPressure), InputToInt(dyastolicPressure)));
+
+            int IntUserID = InputToInt(UserID);
+            _userSamples.Add(new SamplePerUser(_currentSampleID, IntUserID));
         }
     }
 }

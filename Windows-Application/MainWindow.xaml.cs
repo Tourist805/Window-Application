@@ -41,7 +41,7 @@ namespace Windows_Application
         }
         private void OnClick_AddingSample(object sender, RoutedEventArgs e)
         {
-            _session.AddSample(systolicPres_txt.Text, diastolicPres_txt.Text);
+            _session.AddSample(systolicPres_txt.Text, diastolicPres_txt.Text, userId_txt.Text);
         }
     }
   

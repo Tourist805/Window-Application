@@ -50,11 +50,15 @@ namespace Engine.ViewModel
         }
         public void SetUserByID(string id)
         {
-            CurrentUser = DataAccessFactory.UserByID(id);
+            if(DataAccessFactory.UserByID(id) != null)
+            {
+                CurrentUser = DataAccessFactory.UserByID(id);
+            }
+
         }
-        public void AddSample(string systolicPressure, string diastolicPressure)
+        public void AddSample(string systolicPressure, string diastolicPressure, string UserID)
         {
-            DataAccessFactory.AddSample(systolicPressure, diastolicPressure);
+            DataAccessFactory.AddSample(systolicPressure, diastolicPressure, UserID);
         }
     }
 }
