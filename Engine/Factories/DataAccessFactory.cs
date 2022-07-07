@@ -18,15 +18,8 @@ namespace Engine.Factories
         {
             get
             {
-                if(_isDefinedUserID)
-                {
-                    UpdateAccessFactory(_currentUserID);
-                    return _activeSamples;
-                }
-                else
-                {
                     return _samples;
-                }
+                
             }
             set
             {
@@ -82,38 +75,7 @@ namespace Engine.Factories
                 }
             }
         }
-        public static BloodPressureSample SampleBySampleId(string sampleID)
-        {
-            foreach(BloodPressureSample smp in _samples)
-            {
-                if(smp.SampleID == InputToInt(sampleID))
-                {
-                    return smp;
-                }
-            }
-            return null;
-        }
-        public static void UpdateAccessFactory(int Userid)
-        {
-            _activeSamples.Clear();
-            List<int> sampleidAct = new List<int>();
-            foreach(SamplePerUser smp in _userSamples)
-            {
-                if(smp.UserId == Userid)
-                {
-                    sampleidAct.Add(smp.SampleID);
-                }
-            }
-
-            for(int i = 0; i < sampleidAct.Count; i++)
-            {
-                BloodPressureSample smp1 = SampleBySampleId(sampleidAct[i].ToString());
-                if(smp1 != null)
-                {
-                    _activeSamples.Add(smp1);
-                }
-            }
-        }
+       
         private static int InputToInt(string value)
         {
             try

@@ -77,11 +77,14 @@
                     <Style TargetType="DataGridRow">
                         <Setter Property="IsHitTestVisible" Value="False"></Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsNormal}" Value="True">
+                            <DataTrigger Binding="{Binding MapPressure}" Value="Normal">
                                 <Setter Property="Background" Value="Green"></Setter>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding IsNormal}" Value="False">
+                            <DataTrigger Binding="{Binding MapPressure}" Value="Low">
                                 <Setter Property="Background" Value="IndianRed"></Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding MapPressure}" Value="High">
+                                <Setter Property="Background" Value="OrangeRed"></Setter>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
@@ -96,7 +99,17 @@
                     
                 </TabItem>
                 <TabItem Header="Blood monitoring Prescription">
-                    
+                    <TextBox
+                        Height="200"
+                        Width="200"
+                        HorizontalScrollBarVisibility="Visible"
+                        VerticalScrollBarVisibility="Visible"
+                        TextWrapping="Wrap"
+                        TextAlignment="Center"
+                        MaxLength="500"
+                        Text="In general, most people need a MAP of at least 60 mm HgTrusted Source (millimeters of mercury) 
+                             or greater to ensure enough blood flow to vital organs, such as the heart, brain, and kidneys. Doctors usually consider anything between 70 and 100 mm HgTrusted Source to be normal.
+                                                A MAP in this range indicates that there's enough consistent pressure in your arteries to deliver blood throughout your body."></TextBox>
                 </TabItem>
             </TabControl>
         </Grid>
