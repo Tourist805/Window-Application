@@ -69,6 +69,19 @@ namespace Engine.Factories
             }
             return null;
         }
+        public static void UpdateUser(string id, string age, string name, string surname, string email)
+        {
+            foreach (User user in Users)
+            {
+                if (user.UserID == InputToInt(id))
+                {
+                    user.Name = name;
+                    user.Age = InputToInt(age);
+                    user.Surname = surname;
+                    user.Email = email;
+                }
+            }
+        }
         public static BloodPressureSample SampleBySampleId(string sampleID)
         {
             foreach(BloodPressureSample smp in _samples)

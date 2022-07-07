@@ -51,24 +51,27 @@
                     Click="OnClick_SearchByID"
                     Content="Search"/>
             <Label Grid.Row="2" Grid.Column="0" Content="Name"/>
-            <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentUser.Name}"/>
+            <TextBox x:Name="userName_txt" Grid.Row="2" Grid.Column="1" Text="{Binding CurrentUser.Name}"/>
             <Label Grid.Row="3" Grid.Column="0" Content="Surname"/>
-            <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentUser.Surname}"/>
+            <TextBox x:Name="surname_txt" Grid.Row="3" Grid.Column="1" Text="{Binding CurrentUser.Surname}"/>
             <Label Grid.Row="4" Grid.Column="0" Content="Age"/>
-            <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentUser.Age}"/>
+            <TextBox x:Name = "age_txt" Grid.Row="4" Grid.Column="1" Text="{Binding CurrentUser.Age}"/>
             <Label Grid.Row="5" Grid.Column="0" Content="Email"/>
-            <TextBox Grid.Row="5" Grid.Column="1" Height ="60" Width="120" 
+            <TextBox x:Name="email_txt" Grid.Row="5" Grid.Column="1" Height ="60" Width="120" 
                      TextWrapping="Wrap"
                      AcceptsReturn="True"
                      VerticalScrollBarVisibility="Visible"
                      IsReadOnly="True"
                      Text="{Binding Path=CurrentUser.Email}"/>
+            <Button Grid.Row="6" Grid.Column="0" Height="30" Width="120"
+                    Content="Update Data"/>
         </Grid>
 
         <!-- Samples -->
         <Grid Grid.Row="1" Grid.Column="1" Background="BurlyWood">
             <DataGrid   
                       ItemsSource="{Binding Samples}"
+                      SelectedItem="{Binding SelectedSample, Mode=TwoWay}"
                       HeadersVisibility="Column">
             </DataGrid>
         </Grid>

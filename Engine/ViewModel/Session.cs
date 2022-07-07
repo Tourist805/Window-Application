@@ -14,6 +14,19 @@ namespace Engine.ViewModel
         public ObservableCollection<BloodPressureSample> Samples {get;set;}
         public ObservableCollection<User> Users { get; set; }
         private User _currentUser;
+        private BloodPressureSample _selectedSample;
+        public BloodPressureSample SelectedSample
+        {
+            get
+            {
+                return _selectedSample;
+            }
+            set
+            {
+                _selectedSample = value;
+                OnPropertyChanged();
+            }
+        }
        
         public User CurrentUser
         {
@@ -59,6 +72,11 @@ namespace Engine.ViewModel
         public void AddSample(string systolicPressure, string diastolicPressure, string UserID)
         {
             DataAccessFactory.AddSample(systolicPressure, diastolicPressure, UserID);
+        }
+
+        public void UpdateUser(string id, string age, string name, string surname, string email)
+        {
+            DataAccessFactory.UpdateUser(id, age, name, surname, email);
         }
     }
 }

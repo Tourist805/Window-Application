@@ -43,6 +43,10 @@ namespace Windows_Application
         {
             _session.AddSample(systolicPres_txt.Text, diastolicPres_txt.Text, userId_txt.Text);
         }
+        private void OnClick_UpdateData(object sender, RoutedEventArgs e)
+        {
+            _session.UpdateUser(userId_txt.Text, age_txt.Text, userName_txt.Text, surname_txt.Text, email_txt.Text);
+        }
     }
   
 }
