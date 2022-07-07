@@ -41,9 +41,9 @@ namespace Engine.Factories
             _samples.Add(new BloodPressureSample(9002, new DateTime(2022, 4, 1, 7, 30, 52), 99, 66));
             _samples.Add(new BloodPressureSample(9003, new DateTime(2022, 5, 1, 2, 30, 52), 120, 55));
 
-            _userSamples.Add(new SamplePerUser(1002, 9002));
-            _userSamples.Add(new SamplePerUser(1002, 9003));
-            _userSamples.Add(new SamplePerUser(1003, 9001));
+            _userSamples.Add(new SamplePerUser(9002, 1002));
+            _userSamples.Add(new SamplePerUser(9003, 1002));
+            _userSamples.Add(new SamplePerUser(9001, 1003));
         }
         public static void AddUser(User user)
         {
@@ -62,6 +62,34 @@ namespace Engine.Factories
             }
             return null;
         }
+        
+        public static List<BloodPressureSample> FindSamplesByUserID(string UserID)
+        {
+            List<BloodPressureSample> sampleByUserID = new List<BloodPressureSample>();
+
+            int intUserID = InputToInt(UserID);
+            List<int> samplesAssignedUser = new List<int>();
+            foreach(SamplePerUser smp in _userSamples)
+            {
+                if(smp.UserId == intUserID)
+                {
+                    samplesAssignedUser.Add(smp.SampleID);
+                }
+            }
+
+            for(int i = 0; i < samplesAssignedUser.Count; i++)
+            {
+                foreach(BloodPressureSample smp1 in _samples)
+                {
+                    if(smp1.SampleID == samplesAssignedUser[i])
+                    {
+                        sampleByUserID.Add(smp1);
+                    }
+                }
+            }
+            return sampleByUserID;
+        }
+
         public static void UpdateUser(string id, string age, string name, string surname, string email)
         {
             foreach (User user in Users)

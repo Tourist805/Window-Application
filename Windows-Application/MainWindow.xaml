@@ -38,6 +38,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="125"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -64,7 +65,11 @@
                      IsReadOnly="True"
                      Text="{Binding Path=CurrentUser.Email}"/>
             <Button Grid.Row="6" Grid.Column="0" Height="30" Width="120"
+                    Click="OnClick_UpdateData"
                     Content="Update Data"/>
+            <Button Grid.Row="7" Grid.Column="0" Height="30" Width="120"
+                    Content="Search Sample"/>
+
         </Grid>
 
         <!-- Samples -->
