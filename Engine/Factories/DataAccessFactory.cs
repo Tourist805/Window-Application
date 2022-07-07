@@ -63,9 +63,9 @@ namespace Engine.Factories
             return null;
         }
         
-        public static List<BloodPressureSample> FindSamplesByUserID(string UserID)
+        public static ObservableCollection<BloodPressureSample> FindSamplesByUserID(string UserID)
         {
-            List<BloodPressureSample> sampleByUserID = new List<BloodPressureSample>();
+            ObservableCollection<BloodPressureSample> sampleByUserID = new ObservableCollection<BloodPressureSample>();
 
             int intUserID = InputToInt(UserID);
             List<int> samplesAssignedUser = new List<int>();

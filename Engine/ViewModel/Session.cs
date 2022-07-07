@@ -12,6 +12,7 @@ namespace Engine.ViewModel
     {
         public int DefaultValue { get; set; }
         public ObservableCollection<BloodPressureSample> Samples {get;set;}
+        public ObservableCollection<BloodPressureSample> SamplesByUserID { get; set; }
         public ObservableCollection<User> Users { get; set; }
         private User _currentUser;
         private BloodPressureSample _selectedSample;
@@ -47,6 +48,7 @@ namespace Engine.ViewModel
 
             Samples = DataAccessFactory.BloodPressureSamples;
             Users = DataAccessFactory.Users;
+            SamplesByUserID = DataAccessFactory.FindSamplesByUserID("1002");
         }
         private int InputIsString(string id)
         {
@@ -77,6 +79,11 @@ namespace Engine.ViewModel
         public void UpdateUser(string id, string age, string name, string surname, string email)
         {
             DataAccessFactory.UpdateUser(id, age, name, surname, email);
+        }
+
+        public void UpdateSampleByID(string userID)
+        {
+            SamplesByUserID = DataAccessFactory.FindSamplesByUserID(userID);
         }
     }
 }

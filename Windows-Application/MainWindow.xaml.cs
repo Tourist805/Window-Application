@@ -48,9 +48,9 @@ namespace Windows_Application
             _session.UpdateUser(userId_txt.Text, age_txt.Text, userName_txt.Text, surname_txt.Text, email_txt.Text);
         }
 
-        private void OnClick_SearchSample(object sender, RoutedEvent e)
+        private void OnClick_SearchSample(object sender, RoutedEventArgs e)
         {
-            
+            _session.UpdateSampleByID(userId_txt.Text);
         }
 
     }
