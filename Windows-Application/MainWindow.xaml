@@ -73,6 +73,19 @@
                       ItemsSource="{Binding Samples}"
                       SelectedItem="{Binding SelectedSample, Mode=TwoWay}"
                       HeadersVisibility="Column">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="IsHitTestVisible" Value="False"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsNormal}" Value="True">
+                                <Setter Property="Background" Value="Green"></Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsNormal}" Value="False">
+                                <Setter Property="Background" Value="IndianRed"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
             </DataGrid>
         </Grid>
 
